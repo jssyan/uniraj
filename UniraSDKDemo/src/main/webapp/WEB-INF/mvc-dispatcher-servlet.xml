@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="cn.com.syan.netone.unixx.unira.demo.controller"/>
+
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/themes/**" location="/themes/"/>
+    <mvc:resources mapping="/activex/**" location="/activex/"/>
+
+    <!--Freemarker视图解析器，用于解析Freemarker文件-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="order" value="1"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="requestContextAttribute" value="request"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+    </bean>
+    <!--配置视图解析器结束-->
+
+    <!--定义Freemarker的配置信息-->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="classic_compatible">true</prop>
+                <!-- 此属性设置为true则不作null异常抛出 -->
+            </props>
+        </property>
+    </bean>
+
+</beans>

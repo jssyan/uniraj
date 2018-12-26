@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="UniraSDKDemo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="UniraSDKDemo.war">
+      <element id="artifact" artifact-name="UniraSDKDemo:war exploded" />
+    </root>
+  </artifact>
+</component>

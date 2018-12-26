@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="/themes/default/gui.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/demo/js/jquery.js"></script>
+    <script type="text/javascript" src="/demo/js/jquery.sprintf.js"></script>
+    <script type="text/javascript" src="/demo/js/objectclass.js"></script>
+    <script type="text/javascript" src="/demo/js/syan.activex.src.js"></script>
+    <script type="text/javascript" src="/demo/js/netonex.base.src.js"></script>
+    <script type="text/javascript" src="/demo/js/netonex.enroll.src.js"></script>
+
+
+    <style>
+        html, body {
+            font-family: 'Microsoft YaHei', Tahoma, Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            /*background: #DDD url('images/background.gif');*/
+        }
+
+        .red {
+            color: #CC0000;
+            font-weight: bold;
+        }
+
+        .green {
+            color: #0C5F1F;
+            font-weight: bold;
+        }
+
+        .yellow {
+            color: #998300;
+            font-weight: bold;
+        }
+    </style>
+    <title>OneStepIssue</title>
+</head>
+<body>
+<h1>NetONEX UniRA Online</h1>
+
+<form action="/demo/onestepissue" id="iform" method="post">
+<input type="button" value="Issue" action="pkcs10" api="csp" ajax="/onestepissue"
+       tokenname="Microsoft Enhanced Cryptographic Provider v1.0"/>
+<input type="hidden" name="ou" value="深圳市"/>
+</form>
+<div action="netonex" netonexid="netonex" activex_codebase="${base}/activex/NetONEX.v1.2.3.0.cab" npapi_codebase="${base}/activex/npNetONE.v1.3.4.0.msi"
+     version="1.3.4.0" logshowid="divlog">
+    <object width="1" height="1" classid="CLSID:EC336339-69E2-411A-8DE3-7FF7798F8307"
+            codebase="${base}/activex/NetONEX.v1.3.4.0.cab#Version=1,3,4,0"></object>
+</div>
+<div id="divlog">
+</div>
+
+
+</body>
+</html>
