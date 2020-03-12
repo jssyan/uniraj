@@ -301,7 +301,8 @@ var EnrollX = NetONEX.extend({
             this.log('Start certificate issue...');
             //this.log(ex.NewCSR);
             //this.log(this.AJAX_URL);
-            var ajaxReq = $.sprintf("action=install&csr=%s&tokeninfo=%s", encodeURIComponent(ex.NewCSR), encodeURIComponent(JSON.stringify(tokeninfo)));
+			var doubleCert = $("#doubleCert").is(':checked');
+            var ajaxReq = $.sprintf("action=install&csr=%s&tokeninfo=%s&doubleCert=%s", encodeURIComponent(ex.NewCSR), encodeURIComponent(JSON.stringify(tokeninfo)),doubleCert);
             ajaxReq = this.makeQuery(ajaxReq);
             var self = this;
             $.post(this.AJAX_URL,

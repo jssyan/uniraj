@@ -40,9 +40,11 @@
 <h1>NetONEX UniRA Online</h1>
 
 <form action="" id="iform" method="post">
-    用户 <strong><span>${userName!}</span></strong> 注册并审核成功! 提取码(Client ID): <span>${client_id!}</span><br/><br/><br/>
-    <input type="button" value="Issue" action="issue" api="skf" ajax="${base}/issue"
-           />
+    用户 <strong><span>${userName!}</span></strong> 注册并审核成功! 提取码(Client ID): <span>${client_id!}</span><br/><br/><br/>    
+	${error_msg!}
+    <input type="button" value="Issue" action="issue" api="skf" ajax="${base}/issue"/>
+
+    <input type="checkbox" value="1" name="doubleCert" id="doubleCert"/>是否双证书
            <#--tokenname="Microsoft Enhanced Cryptographic Provider v1.0"/>-->
         <input type="button" value="冻结" action="freeze" clientid="${client_id!}" api="skf" ajax="${base}/freeze"/>
         <input type="button" value="解冻" action="unfreeze" clientid="${client_id!}" api="skf" ajax="${base}/unfreeze"/>

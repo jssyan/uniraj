@@ -111,9 +111,12 @@ public class UniraSDKDemoController {
                     modelMap.put("client_id", user1ClientId);
                     modelMap.put("userName", name);
                 }
+            }else{
+                modelMap.put("error_msg",urClient1.getErrorMessages());
             }
 
         } catch (Exception e) {
+			modelMap.put("error_msg",e.getMessage());
             e.printStackTrace();
         }
 
@@ -155,6 +158,10 @@ public class UniraSDKDemoController {
 
                 return null;
             } else if ("install".equals(action)) {
+				
+				 //双证
+                String doubleCert = request.getParameter("doubleCert");
+                boolean doublecert = Boolean.valueOf(doubleCert);
                 Enumeration enu = request.getParameterNames();
                 String paraName;
                 while (enu.hasMoreElements()) {
@@ -163,7 +170,7 @@ public class UniraSDKDemoController {
                 }
 
                 //默认1年有效期
-                UniraResponseCrt crt = proxy.issueAjax(clientId, "1y", request, false);
+                UniraResponseCrt crt = proxy.issueAjax(clientId, "1y", request, doublecert);
 
                 if (crt.isFailed()) {
                     errorMap.put("error", "failed to issue ajax");
